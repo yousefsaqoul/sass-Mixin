@@ -1,0 +1,180 @@
+$bgCo: rgba(0, 0, 255, 0.514);
+$myFont: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+@mixin spaceStyle($m, $b, $pa, $boxSh) {
+    margin: $m;
+    border: $b;
+    padding: $pa;
+    box-shadow: $boxSh;   
+}
+@mixin textStyle($h, $txa, $pa)
+{
+    height: $h;
+    text-align: $txa;
+    padding: $pa;
+}
+@mixin hStyle($rem)
+{
+    font-size: $rem;
+}
+@mixin navLinks($mT, $disFlex, $jusCont, $mB, )
+{
+    margin-top: $mT;
+ 	display: $disFlex;
+ 	justify-content: $jusCont;
+     margin-bottom: $mB;
+}
+
+@mixin liStyle($pa, $liS){
+    padding: $pa;
+    list-style: $liS;
+}
+@mixin aStyle($txDec, $color,){
+    text-decoration: none;
+	color: black;
+}
+@mixin mainStyle ($disFlex, $flexFl, $justCont, $aliItem){
+    display: $disFlex;
+   flex-flow: $flexFl;
+    justify-content: $justCont;
+    align-items: $aliItem;
+}
+@mixin h3Style ($txtAli){
+    text-align: $txtAli;
+}
+@mixin imgStyle($h,$w,$m){
+    height: $h;
+    width: $w;
+    margin: $m;
+}
+@mixin asideStyle($disFlex,$flexFl,$justCon,$m){
+    display: $disFlex;
+	flex-flow: $flexFl;
+ 	justify-content: $justCon;
+ 	margin: $m;
+}
+@mixin asidGroupStyle ($b,$pa,$mb)
+{
+    border: $b;    
+ 	padding: $pa;
+ 	margin-bottom: $mb;
+}
+
+@mixin footerLiStyle($disFlex,$justCont,$mb)
+{
+    display: $disFlex;
+    justify-content: $justCont;
+    margin: $mb
+
+}
+@mixin footerStyle($h,$mt,)
+{
+    height: $h;
+     margin-top: $mt;
+}
+
+
+
+// include
+
+*{
+    @include spaceStyle(0, 0, 0, border-box);
+}
+
+
+
+.header {
+    @include textStyle(6rem, center, 1.5rem);
+    font-family: $myFont;
+}
+
+
+
+h1, h2 {
+    @include hStyle(1rem)
+
+}
+
+.nav_links {
+    @include navLinks(1rem, flex, center, 1rem, );
+    background-color: $bgCo;
+}
+li
+{
+    @include liStyle(1rem, none)
+}
+
+
+a {
+    @include aStyle(none, black)
+}
+
+
+
+.main
+{
+    @include mainStyle (flex, column nowrap, center, center);
+}
+
+
+.section_text > h3{
+    @include h3Style (center)
+}
+
+
+.section_text, .section_images{
+    @include spaceStyle(1rem, 0, 0, none);
+}
+
+.section_images{
+    @include mainStyle (flex, column nowrap, center, center);
+}
+
+img{
+    @include imgStyle(12rem,18rem,0 0.5 1rem 0.5rem);
+
+}
+
+
+.aside
+{
+    @include asideStyle(flex,column nowrap ,center,1rem)
+
+}
+
+.first_aside, .second_aside, .third_aside, .fourth_aside 
+{
+    @include asidGroupStyle (0.2rem solid rgba(0, 0, 255, 0.678),1rem,1rem)
+}
+
+.footer_links {
+    @include footerLiStyle(flex,center,1rem)
+}
+
+.footer {
+    @include footerStyle(5rem,1rem,);
+    background-color: $bgCo;
+
+}
+
+
+@media screen and (min-width: 600px) {
+	.section_images {
+    	display: flex;
+    	flex-flow: row wrap;
+	}
+
+	.section_text {
+    	width: 70%;
+	}
+
+	.aside {
+    	display: flex;
+    	flex-flow: row wrap;
+	}
+
+	.first_aside, .second_aside, .third_aside, .fourth_aside {
+    	width: 45%;
+    	margin: 0.5rem;
+	}
+}
